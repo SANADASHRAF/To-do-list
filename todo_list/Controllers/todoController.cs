@@ -24,18 +24,18 @@ namespace todo_list.Controllers
         }
         #endregion
 
-        #region daily 
+        #region hom2
         [HttpPost]
         public ActionResult home(daily d, string target)
         {
             if (target == "monthly")
             {
-                return RedirectToAction("monthly");
+                return RedirectToAction("monthly",new {Name=d.Name });
             }
 
             if (target == "annual")
             {
-                return RedirectToAction("anyaly");
+                return RedirectToAction("anyaly",new { Name = d.Name });
             }
 
             d.Date = DateTime.Now;
@@ -72,9 +72,10 @@ namespace todo_list.Controllers
             db.dailies.Remove(delitem);
             db.SaveChanges();
             return RedirectToAction("showdaily");
-        } 
+        }
         #endregion
 
+        #region uppdate daily todo
         public ActionResult update(int Id)
         {
             var x = db.dailies.Where(n => n.Id == Id).SingleOrDefault();
@@ -87,42 +88,134 @@ namespace todo_list.Controllers
         {
             db.Entry(d).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("showdaily");
+            return RedirectToAction("home");
         }
 
+        #endregion
 
-            public ActionResult monthly(monthly m)
+        ///////////////////////////////////////////////monthly
+        #region add manthly todo 
+        public ActionResult monthly(monthly m)
         {
 
             m.Date = DateTime.Now;
 
+            if (m.Name != "")
+            {
+                if (ModelState.IsValid)
+                {
+                    db.monthlies.Add(m);
+                    db.SaveChanges();
+                    return RedirectToAction("monthshow");
+
+                }
+            }
+            
+            return RedirectToAction("monthshow");
+        }
+        #endregion
+
+        #region monthshow todo
+        public ActionResult monthshow()
+        {
+            List<monthly> li = db.monthlies.ToList();
+            return View(li);
+        }
+        #endregion
+
+        #region delmonth todo
+        public ActionResult delmonth(int Id)
+        {
+            var x = db.monthlies.Where(n => n.Id == Id).SingleOrDefault();
+            db.monthlies.Remove(x);
+            db.SaveChanges();
+            return RedirectToAction("monthshow");
+        }
+        #endregion
+
+
+        #region updatemonth todo
+        public ActionResult updatemonth(int Id)
+        {
+            var x = db.monthlies.Where(n => n.Id == Id).SingleOrDefault();
+            return View(x);
+        }
+        [HttpPost]
+        public ActionResult updatemonth(monthly m)
+        {
             if (ModelState.IsValid)
             {
-                db.monthlies.Add(m);
-
+                db.Entry(m).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("monthshow");
             }
-
-            return View("monthly");
-
+            return View();
         }
+
+        #endregion
+
+
+        ////////////////////////////////////////////////anyaly
+        #region addannual todo
         public ActionResult anyaly(annualcs a)
         {
 
-
             a.Date = DateTime.Now;
-
-            if (ModelState.IsValid)
+            if (a.Name != "")
             {
-                db.annualcs.Add(a);
-
+                if (ModelState.IsValid)
+                {
+                    db.annualcs.Add(a);
+                    db.SaveChanges();
+                    return RedirectToAction("anualshow");
+                }
             }
+            return View("anualshow");
+        } 
+        #endregion
 
-            return View("anyaly");
-
-
+        #region anualhshow todo
+        public ActionResult anualshow()
+        {
+            List<annualcs> li = db.annualcs.ToList();
+            return View(li);
         }
 
+        #endregion
+
+        #region delanual todo
+        public ActionResult delanual(int Id)
+        {
+            var x = db.annualcs.Where(n => n.Id == Id).SingleOrDefault();
+            db.annualcs.Remove(x);
+            db.SaveChanges();
+            return RedirectToAction("anualshow");
+        }
+        #endregion
 
 
+        #region updateannual todo
+        public ActionResult updateannual(int Id)
+        {
+            var x = db.annualcs.Where(n => n.Id == Id).SingleOrDefault();
+            return View(x);
+        }
+
+        [HttpPost]
+       
+        public ActionResult updateannual(annualcs a)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(a).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("anualshow");
+            }
+            return View();
+        }
+
+        #endregion
+  
+    
     }
 }

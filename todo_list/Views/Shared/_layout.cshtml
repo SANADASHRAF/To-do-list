@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      
+        * {box-sizing: border-box;}
+
+      body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+
+             }
+
+      .header {
+          overflow: hidden;
+          background-color:lightseagreen;
+          padding: 20px 10px;
+          margin-bottom:50px
+          
+      }
+
+        .header a {
+          float: left;
+          color: white;
+          text-align: center;
+          padding: 12px;
+          text-decoration: none;
+          font-size: 18px;
+          line-height: 25px;
+          border-radius: 4px;
+        }
+
+        .header a:hover {
+          background-color: #ddd;
+          color: blue;
+        }
+
+      
+
+
+      .header-right {
+          display: flex;
+          padding-left: 500px;
+          justify-content: space-between;
+          max-width: 1500px;
+          font-size:xx-large;
+          color:white
+         
+      }
+      
+
+</style>
+</head>
+<body>
+
+    @*header*@
+    <div class="header">
+        <div class="header-right">
+            @Html.ActionLink("Home", "home", "todo")
+            @Html.ActionLink("Daily Target", "showdaily", "todo")
+            @Html.ActionLink("Monthly Target", "monthly", "todo")
+            @Html.ActionLink("Annual Target", "anyaly", "todo")
+            @Html.ActionLink("Achaivements", "note", "todo")
+            @Html.ActionLink("Notes", "note", "todo")
+
+           
+
+        </div>
+    </div>
+
+    
+
+    @RenderBody()
+</body>
+@RenderSection("script",false)
+</html>
+

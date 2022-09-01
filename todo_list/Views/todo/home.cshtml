@@ -1,0 +1,84 @@
+﻿@model List<todo_list.Models.daily>
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2 style="text-align:center;font-size:50px">Never Stop</h2>
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: x-large
+    }
+
+    .for {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 800px;
+        margin-left: 570px;
+        font-size: x-large;
+        background-color: cadetblue
+    }
+</style>
+<body>
+
+
+
+    <div class="for">
+        <form method="post">
+            <label for="ADD">ADD</label>
+            <input type="text" name="name" placeholder="what you want to add to todo..">
+            <label for="target">Target</label>
+            <select name="target">
+                <option value=""></option>
+                <option value="daily">daily</option>
+                <option value="monthly">monthly</option>
+                <option value="annual">annual</option>
+            </select>
+
+            <input style="width:180px;height:50px; display:flex;justify-content:center;background-color:lightgreen;color:black;font-size:larger" type="submit" value="ADD" class="btn btn-primary" />
+        </form>
+    </div>
+
+
+
+    <div style="margin-top:40px">
+        <h1 style="text-align:center;font-size:40px;font-weight:bolder ;background-color:aqua;width:1200px;margin-left:350px"> Daily Target</h1>
+
+
+        <table class="table table-dark table-hover" style="width:1200px;margin-left:350px;text-align:center">
+
+            <tr style="font-size:xx-large">
+                <td>ID</td>
+                <td>Name</td>
+                <td>Date</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Name</td>
+                    <td>@x.Date</td>
+                    <td>@Html.ActionLink("Delete", "delete", null, new { Id = x.Id }, new { @class = "btn btn-danger" })</td>
+                    <td>@Html.ActionLink("Update", "update", new { Id = x.Id }, new { @class = "btn btn-primary" })</td>
+                    <td>@Html.ActionLink("Done", "done", new { Id = x.Id }, new { @class = "btn btn-success" })</td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+
+

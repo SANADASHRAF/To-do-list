@@ -93,6 +93,27 @@ namespace todo_list.Controllers
 
         #endregion
 
+
+        #region finsh achaivement
+        public ActionResult donedaily(daily d, achaivement m)
+        {
+
+            var x = db.dailies.Where(n => n.Id == d.Id).SingleOrDefault();
+
+
+            m.Name = x.Name;
+            m.targeet = "daily";
+            db.achaive.Add(m);
+            db.SaveChanges();
+
+            db.dailies.Remove(x);
+            db.SaveChanges();
+            return RedirectToAction("showdaily");
+        } 
+        #endregion
+
+
+
         ///////////////////////////////////////////////monthly
         #region add manthly todo 
         public ActionResult monthly(monthly m)
@@ -155,6 +176,23 @@ namespace todo_list.Controllers
         #endregion
 
 
+        #region finish achiavement
+        public ActionResult donemonthly(monthly d, achaivement m)
+        {
+
+            var x = db.monthlies.Where(n => n.Id == d.Id).SingleOrDefault();
+
+
+            m.Name = x.Name;
+            m.targeet = "monthly";
+            db.achaive.Add(m);
+            db.SaveChanges();
+
+            db.monthlies.Remove(x);
+            db.SaveChanges();
+            return RedirectToAction("monthshow");
+        } 
+        #endregion
         ////////////////////////////////////////////////anyaly
         #region addannual todo
         public ActionResult anyaly(annualcs a)
@@ -215,7 +253,38 @@ namespace todo_list.Controllers
         }
 
         #endregion
-  
-    
+
+
+
+        #region finish achaivement
+        public ActionResult doneanuual(annualcs d, achaivement m)
+        {
+
+            var x = db.annualcs.Where(n => n.Id == d.Id).SingleOrDefault();
+
+
+            m.Name = x.Name;
+            m.targeet = "anually";
+            db.achaive.Add(m);
+            db.SaveChanges();
+
+            db.annualcs.Remove(x);
+            db.SaveChanges();
+            return RedirectToAction("anualshow");
+        }
+        #endregion
+        /////////////////////////////////////////////////////
+
+
+        #region my achaivement
+        public ActionResult donmyachaive()
+        {
+            return View(db.achaive.ToList());
+        } 
+        #endregion
+
+
+
+
     }
 }

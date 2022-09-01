@@ -3,8 +3,9 @@
     ViewBag.Title = "monthshow";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
+<h1 style="width: 1200px; margin-left: 350px; text-align: center; margin-top: 100px; background-color: aqua; margin-top: 100px">My Monthly Target</h1>
 
-<table class="table table-dark table-hover" style="width:1200px;margin-left:350px;text-align:center;margin-top:100px">
+<table class="table table-dark table-hover" style="width:1200px;margin-left:350px;text-align:center;">
 
     <tr style="font-size:xx-large">
         <td>ID</td>
@@ -23,7 +24,7 @@
             <td>@x.Date</td>
             <td>@Html.ActionLink("Delete", "delmonth", null, new { Id = x.Id }, new { @class = "btn btn-danger" })</td>
             <td>@Html.ActionLink("Update", "updatemonth", new { Id = x.Id }, new { @class = "btn btn-primary" })</td>
-            <td>@Html.ActionLink("Done", "done", new { Id = x.Id }, new { @class = "btn btn-success" })</td>
+            <td>@Html.ActionLink("Done", "donemonthly", new { Id = x.Id }, new { @class = "btn btn-success" })</td>
 
         </tr>
     }

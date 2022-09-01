@@ -17,5 +17,6 @@ namespace todo_list.Models
         public DbSet<monthly> monthlies { get; set; }   
         public DbSet<annualcs> annualcs { get; set; }
         public DbSet<daily> dailies { get; set; }
+        public DbSet<achaivement>achaive { get; set; }
     }
 }

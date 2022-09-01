@@ -1,0 +1,28 @@
+﻿@model List<todo_list.Models.achaivement>
+@{
+    ViewBag.Title = "donmyachaive";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h1 style="width: 1200px; margin-left: 350px; text-align: center; margin-top: 100px;background-color:aqua">My Achaivements</h1>
+<table class="table table-hover table-dark" style="width:1200px;margin-left:350px;text-align:center;">
+
+    <tr style="font-size:xx-large">
+        <td>ID</td>
+        <td>Name</td>
+        <td>targeet</td>
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr >
+            <td>@x.Id</td>
+            <td>@x.Name</td>
+            <td>@x.targeet</td>
+
+        </tr>
+    }
+
+</table>
+

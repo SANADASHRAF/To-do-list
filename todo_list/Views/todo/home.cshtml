@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-<h2 style="text-align:center;font-size:50px">Never Stop</h2>
+<h2 style="text-align:center;font-size:50px;background-color:aqua;width:800px;margin-left:570px">Never Stop</h2>
 <style>
     input[type=text], select {
         width: 100%;
@@ -72,7 +72,7 @@
                     <td>@x.Date</td>
                     <td>@Html.ActionLink("Delete", "delete", null, new { Id = x.Id }, new { @class = "btn btn-danger" })</td>
                     <td>@Html.ActionLink("Update", "update", new { Id = x.Id }, new { @class = "btn btn-primary" })</td>
-                    <td>@Html.ActionLink("Done", "done", new { Id = x.Id }, new { @class = "btn btn-success" })</td>
+                    <td>@Html.ActionLink("Done", "donedaily", new { Id = x.Id }, new { @class = "btn btn-success" })</td>
 
                 </tr>
             }

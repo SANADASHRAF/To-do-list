@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "notee";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: x-large
+    }
+    .for {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 800px;
+        margin-left: 570px;
+        font-size: x-large;
+        background-color: cadetblue
+    }
+</style>
+<body>
+
+
+
+    <div class="for">
+        <form method="post">
+            <label style="padding-left:300px;font-size:xx-large">ADD THING..!!</label>
+            <input type="text" name="title" placeholder="what you are Planning or Thinking..">
+
+            <input style="width:130px;height:40px; display:flex;justify-content:center;font-size:larger " type="submit" value="Add" class="btn btn-success" />
+        </form>
+        <div style="padding-left:500px;margin-top:-40px;">@Html.ActionLink("Your Note", "yournote", null, new { @class = "btn btn-primary" })</div>
+    </div>
+
+
+
+    
+    
+    </body>

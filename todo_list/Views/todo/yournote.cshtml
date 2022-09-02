@@ -1,0 +1,20 @@
+﻿@model List<todo_list.Models.note>
+@{
+    ViewBag.Title = "yournote";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h1 style="text-align:center;font-weight:bolder;margin-bottom:20px">YOUR NOTE</h1>
+
+@foreach (var x in Model)
+{
+    <div class="card text-white bg-secondary mb-3" style="max-width: 1300px;height:170px;margin-left:300px">
+        <div class="card-header" style="text-align:center;font-size:xx-large;font-weight:bolder">Note @x.id</div>
+        <div class="card-body">
+            <h5 class="card-title">@x.title</h5>
+            <div style="padding-left:620px"> @Html.ActionLink("delete", "delnote", new { id = x.id }, new { @class = "btn btn-danger" })</div>
+
+        </div>
+         </div>
+}
+

@@ -11,7 +11,7 @@ namespace todo_list.Controllers
     public class todoController : Controller
     {
 
-        datacontext db= new datacontext();
+         datacontext db = new datacontext();
 
 
         //toster notification
@@ -30,18 +30,18 @@ namespace todo_list.Controllers
         {
             if (target == "monthly")
             {
-                return RedirectToAction("monthly",new {Name=d.Name });
+                return RedirectToAction("monthly", new { Name = d.Name });
             }
 
             if (target == "annual")
             {
-                return RedirectToAction("anyaly",new { Name = d.Name });
+                return RedirectToAction("anyaly", new { Name = d.Name });
             }
 
             d.Date = DateTime.Now;
 
             if (target == "daily" && d.Name != "")
-            {   
+            {
                 if (ModelState.IsValid)
                 {
                     db.dailies.Add(d);
@@ -49,7 +49,7 @@ namespace todo_list.Controllers
                     return RedirectToAction("home");
 
                 }
-             }
+            }
 
 
 
@@ -109,7 +109,7 @@ namespace todo_list.Controllers
             db.dailies.Remove(x);
             db.SaveChanges();
             return RedirectToAction("showdaily");
-        } 
+        }
         #endregion
 
 
@@ -131,7 +131,7 @@ namespace todo_list.Controllers
 
                 }
             }
-            
+
             return RedirectToAction("monthshow");
         }
         #endregion
@@ -191,7 +191,7 @@ namespace todo_list.Controllers
             db.monthlies.Remove(x);
             db.SaveChanges();
             return RedirectToAction("monthshow");
-        } 
+        }
         #endregion
         ////////////////////////////////////////////////anyaly
         #region addannual todo
@@ -209,7 +209,7 @@ namespace todo_list.Controllers
                 }
             }
             return View("anualshow");
-        } 
+        }
         #endregion
 
         #region anualhshow todo
@@ -240,7 +240,7 @@ namespace todo_list.Controllers
         }
 
         [HttpPost]
-       
+
         public ActionResult updateannual(annualcs a)
         {
             if (ModelState.IsValid)
@@ -280,11 +280,35 @@ namespace todo_list.Controllers
         public ActionResult donmyachaive()
         {
             return View(db.achaive.ToList());
-        } 
+        }
         #endregion
 
+        /////////////////////////////////////////////
+        public ActionResult notee()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult notee(note n)
+        {
+            db.note.Add(n);
+            db.SaveChanges();
+            return RedirectToAction("yournote");
+           
+        }
+        public ActionResult yournote()
+        {
+            return View(db.note.ToList());
+        }
 
-
+        public ActionResult delnote(int id)
+        {
+            var x=db.note.Where(n=>n.id==id).SingleOrDefault();
+            db.note.Remove(x);
+            db.SaveChanges();
+            return RedirectToAction("yournote");
+        }
+        
+    }
 
     }
-}

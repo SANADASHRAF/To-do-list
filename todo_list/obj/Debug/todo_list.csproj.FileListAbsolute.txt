@@ -136,3 +136,4 @@ C:\Users\top\Desktop\projects\todo\To-do-list\todo_list\bin\roslyn\System.Numeri
 C:\Users\top\Desktop\projects\todo\To-do-list\todo_list\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\top\Desktop\projects\todo\To-do-list\todo_list\obj\Debug\todo_list.Migrations.up7.resources
 C:\Users\top\Desktop\projects\todo\To-do-list\todo_list\obj\Debug\todo_list.csproj.GenerateResource.cache
+C:\Users\top\Desktop\projects\todo\To-do-list\todo_list\obj\Debug\todo_list.Migrations.up8.resources

@@ -138,12 +138,17 @@
     <Compile Include="Migrations\202209011151595_up7.designer.cs">
       <DependentUpon>202209011151595_up7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209011320007_up8.cs" />
+    <Compile Include="Migrations\202209011320007_up8.designer.cs">
+      <DependentUpon>202209011320007_up8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\achaivement.cs" />
     <Compile Include="Models\annualcs.cs" />
     <Compile Include="Models\daily.cs" />
     <Compile Include="Models\datacontext.cs" />
     <Compile Include="Models\monthly.cs" />
+    <Compile Include="Models\note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +187,8 @@
     <Content Include="Views\todo\anualshow.cshtml" />
     <Content Include="Views\todo\updateannual.cshtml" />
     <Content Include="Views\todo\donmyachaive.cshtml" />
+    <Content Include="Views\todo\notee.cshtml" />
+    <Content Include="Views\todo\yournote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -195,6 +202,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202209011151595_up7.resx">
       <DependentUpon>202209011151595_up7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209011320007_up8.resx">
+      <DependentUpon>202209011320007_up8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
